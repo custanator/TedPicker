@@ -3,17 +3,18 @@
  */
 
 apply plugin: 'com.android.application'
+apply plugin: 'maven'
 
 android {
-    compileSdkVersion 23
-    buildToolsVersion "23.0.2"
+    compileSdkVersion 30
+    buildToolsVersion "29.0.2"
 
     defaultConfig {
         applicationId "gun0912.com.test_picker"
         minSdkVersion 15
-        targetSdkVersion 22
-        versionCode 1
-        versionName "1.0"
+        targetSdkVersion 30
+        versionCode 2
+        versionName "1.0.1"
     }
     buildTypes {
         release {
@@ -37,11 +38,10 @@ repositories {
 
 
 dependencies {
-    compile project(':tedpicker')
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    implementation project(':tedpicker')
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    compile 'com.android.support:appcompat-v7:23.2.0'
-
-
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'com.commonsware.cwac:camera:0.7+'
 
 }

@@ -1,8 +1,9 @@
 package com.gun0912.tedpicker.custom.adapter;
 
 import android.graphics.Rect;
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
+
+import androidx.recyclerview.widget.RecyclerView;
 
 /**
  * Created by TedPark on 15. 11. 24..

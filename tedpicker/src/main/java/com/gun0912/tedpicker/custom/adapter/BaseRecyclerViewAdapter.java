@@ -1,8 +1,9 @@
 package com.gun0912.tedpicker.custom.adapter;
 
 import android.content.Context;
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
+
+import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -70,7 +71,6 @@ public abstract class BaseRecyclerViewAdapter<T, H extends RecyclerView.ViewHold
 
 
     }
-
 
     public void addItem(T item) {
         if (arrayList == null) {

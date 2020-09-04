@@ -1,11 +1,12 @@
 package com.gun0912.tedpicker;
 
 import android.net.Uri;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.gun0912.tedpicker.custom.adapter.BaseRecyclerViewAdapter;
@@ -14,9 +15,9 @@ import com.gun0912.tedpicker.custom.adapter.BaseRecyclerViewAdapter;
 /**
  * Created by TedPark on 16. 2. 20..
  */
+
+
 public class Adapter_SelectedPhoto extends BaseRecyclerViewAdapter<Uri, Adapter_SelectedPhoto.SelectedPhotoHolder> {
-
-
 
     int closeImageRes;
 
@@ -26,17 +27,12 @@ public class Adapter_SelectedPhoto extends BaseRecyclerViewAdapter<Uri, Adapter_
         super(imagePickerActivity);
         this.imagePickerActivity = imagePickerActivity;
         this.closeImageRes = closeImageRes;
-
-
     }
 
     @Override
     public void onBindView(SelectedPhotoHolder holder, int position) {
 
         Uri uri = getItem(position);
-
-
-
         Glide.with(imagePickerActivity)
                 .load(uri.toString())
              //   .override(selected_bottom_size, selected_bottom_size)
@@ -44,13 +40,7 @@ public class Adapter_SelectedPhoto extends BaseRecyclerViewAdapter<Uri, Adapter_
                 .centerCrop()
                 .error(R.drawable.no_image)
                 .into(holder.selected_photo);
-
-
-
-
         holder.iv_close.setTag(uri);
-
-
 
     }
 
@@ -61,10 +51,6 @@ public class Adapter_SelectedPhoto extends BaseRecyclerViewAdapter<Uri, Adapter_
         View view = mInflater.inflate(R.layout.picker_list_item_selected_thumbnail, parent, false);
         return new SelectedPhotoHolder(view);
     }
-
-
-
-
 
     class SelectedPhotoHolder extends RecyclerView.ViewHolder {
 
@@ -86,10 +72,7 @@ public class Adapter_SelectedPhoto extends BaseRecyclerViewAdapter<Uri, Adapter_
             });
 
         }
-
-
-
-
-
     }
+
+
 }

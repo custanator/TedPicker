@@ -26,8 +26,6 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -38,6 +36,9 @@ import android.view.animation.AccelerateInterpolator;
 import android.view.animation.DecelerateInterpolator;
 import android.view.animation.Interpolator;
 import android.widget.ImageButton;
+
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
 
 import com.commonsware.cwac.camera.CameraUtils;
 import com.commonsware.cwac.camera.CameraView;
@@ -164,34 +165,10 @@ public class CwacCameraFragment extends Fragment implements View.OnClickListener
         SensorManager sensorManager = (SensorManager) getActivity().getSystemService(Context.SENSOR_SERVICE);
         sensorManager.registerListener(new SensorEventListener() {
 
-
             @Override
             public void onSensorChanged(SensorEvent event) {
-
-
-/*
-
-                if (event.values[1]<6.5 && event.values[1]>-6.5) {
-                    if (device_orientation!=1) {
-                        Log.d("Sensor", "Landscape");
-                    }
-                    device_orientation=1;
-                } else {
-                    if (device_orientation!=0) {
-                        Log.d("Sensor", "Portrait");
-                    }
-                    device_orientation=0;
-                }
-
-
-*/
-
                 float x = event.values[0];
                 float y = event.values[1];
-
-
-
-
                 if (x<5 && x>-5 && y > 5)
                     device_orientation = 0;
                 else if (x<-5 && y<5 && y>-5)
@@ -200,10 +177,6 @@ public class CwacCameraFragment extends Fragment implements View.OnClickListener
                     device_orientation = 180;
                 else if (x>5 && y<5 && y>-5)
                     device_orientation = 270;
-
-
-
-
             }
 
             @Override
@@ -339,8 +312,6 @@ public class CwacCameraFragment extends Fragment implements View.OnClickListener
 
 
     }
-
-
 
     public void onTakePicture(View view) {
         Log.d("gun0912","onTakePicture()");

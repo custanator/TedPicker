@@ -8,13 +8,6 @@ import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.design.widget.TabLayout;
-import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v4.content.ContextCompat;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -24,8 +17,16 @@ import android.view.ViewTreeObserver;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.content.ContextCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager.widget.ViewPager;
+
 import com.commonsware.cwac.camera.CameraHost;
 import com.commonsware.cwac.camera.CameraHostProvider;
+import com.google.android.material.tabs.TabLayout;
 import com.gun0912.tedpicker.custom.adapter.SpacesItemDecoration;
 import com.gun0912.tedpicker.util.Util;
 
@@ -94,13 +95,15 @@ public class ImagePickerActivity extends AppCompatActivity implements CameraHost
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setHomeButtonEnabled(true);
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setHomeButtonEnabled(true);
+        }
 
 
         view_root = findViewById(R.id.view_root);
-        mViewPager = (ViewPager) findViewById(R.id.pager);
-        tabLayout = (TabLayout) findViewById(R.id.tab_layout);
+        mViewPager = findViewById(R.id.pager);
+        tabLayout = findViewById(R.id.tab_layout);
 
 
         tv_selected_title = (TextView) findViewById(R.id.tv_selected_title);
@@ -197,9 +200,6 @@ public class ImagePickerActivity extends AppCompatActivity implements CameraHost
         }
 
 
-
-
-
     }
 
 
@@ -231,27 +231,19 @@ public class ImagePickerActivity extends AppCompatActivity implements CameraHost
         }
 
 
-
-
-        rc_selected_photos.smoothScrollToPosition(adapter_selectedPhoto.getItemCount()-1);
+        rc_selected_photos.smoothScrollToPosition(adapter_selectedPhoto.getItemCount() - 1);
 
 
     }
 
     public void removeImage(Uri uri) {
-
-
         mSelectedImages.remove(uri);
-
         adapter_selectedPhoto.updateItems(mSelectedImages);
 
         if (mSelectedImages.size() == 0) {
             mSelectedImageEmptyMessage.setVisibility(View.VISIBLE);
         }
         GalleryFragment.mGalleryAdapter.notifyDataSetChanged();
-
-
-
     }
 
     public boolean containsImage(Uri uri) {
